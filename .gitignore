@@ -5,3 +5,4 @@ wandb/
 .vscode
 *.npy
 *.csv
+data/
