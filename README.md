@@ -24,12 +24,32 @@ conda install python==3.11.3
 pip install -r requirements.txt
 ```
 
-## Usage
+## Data
 
-First download the data necessary to run our code at [this link](https://wustl.box.com/s/3jkz8ksu9l3d1hqikir4olainke9wc5t).
+Download the data necessary to run our code at [this link](https://wustl.box.com/s/3jkz8ksu9l3d1hqikir4olainke9wc5t).
 The downloaded `data` folder should be placed in the root directory of this repository, replacing the default `data` folder.
 
-`mof_search/utils.py` contains the implementation of our Gaussian process model and other helper functions, which are used in `mof_search/run_bo.py` to facilitate an optimization run.
+### Raw data
+
+- The spreadsheet `DB_10042.csv` contains our entire MOF database, where each row corresponds to a specific MOF.
+- The spreadsheet `Label1000.csv` contains our randomly selected 1000 MOFs that we labeled to validate our model and methods.
+
+### Precomputed data
+
+Various quantities can be precomputed once and loaded by our model on demand during the Bayesian optimization loop.
+- The NumPy array `DB_10042_node_sims2.npy` contains the kernel matrix based on node SMILES similarities of all data points in the database (denoted as $K_\text{node}$ in our paper).
+- The NumPy array `DB_10042_linker_sims2.npy` contains the kernel matrix based on linker SMILES similarities of all data points in the database (denoted as $K_\text{linker}$ in our paper).
+- The NumPy array `DB_10042_distributional_sims.npy` contains the kernel matrix based on similarities of pore size distribution of all data points in the database (denoted as $K_\text{PSD}$ in our paper).
+- The NumPy array `DB_10042_fixed_covariance_matrix.npy` contains the kernel matrix that combines the four individual base kernels according to Eq. (6) in our paper, where each weight $w_i = 0.25$ (see Section 3.3 of our paper).
+
+### Trial experiments
+
+The `simulated_runs` folder contains results from our trial experiments that make up Figure 6 of our paper.
+See the next section for how to reproduce these results.
+
+## Usage
+
+The script `mof_search/utils.py` contains the implementation of our Gaussian process model and other helper functions, which are used in `mof_search/run_bo.py` to facilitate an optimization run.
 
 To start an optimization run, run `mof_search/run_bo.py` with the arguments of your choice.
 - The `method` argument specifies the optimization method to run, supporting `VBO` (our method), `BO` (the traditional Bayesian optimization baseline), and `random` (random search).
@@ -42,7 +62,10 @@ python run_bo.py --method VBO --target M_Storage --seed 0
 ```
 
 You can run the three methods with seeds 0–9 to replicate our experiment results.
-You can further run the corresponding Jupyter notebooks in `notebooks` to recreate the figures in our paper.
+
+## Tutorial notebooks
+
+You can further run the corresponding Jupyter notebooks in `notebooks` to follow our data-processing procedure (in subfolder `notebooks/Preprocessing`) and recreate the figures in our paper (in subfloder `notebooks/Recreate figures`).
 
 ## Citations
 ```bibtex
