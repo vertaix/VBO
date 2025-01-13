@@ -11,7 +11,7 @@ We do this by designing a MOF-specific kernel that accounts for a multitude of i
 <em>The workflow of our VBO framework, where diverse MOFs are iteratively selected to optimize NH₃ adsorption capabilities.</em>
 </p>
 
-For more information, please see our paper, [Diversity-driven, efficient exploration of a MOF design space to optimize MOF properties: application to NH₃ adsorption](https://chemrxiv.org/engage/chemrxiv/article-details/661dd99b418a5379b0ee73fc).
+For more information, please see our paper, [Diversity-driven, efficient exploration of a MOF design space to optimize MOF properties: application to NH₃ adsorption](https://pubs.rsc.org/en/content/articlehtml/2024/sc/d4sc03609c).
 
 ## Installation
 
@@ -53,7 +53,7 @@ The script `mof_search/utils.py` contains the implementation of our Gaussian pro
 
 To start an optimization run, run `mof_search/run_bo.py` with the arguments of your choice.
 - The `method` argument specifies the optimization method to run, supporting `VBO` (our method), `BO` (the traditional Bayesian optimization baseline), and `random` (random search).
-- The `target` argument specifies the metric to be optimized, supporting `M_Storage`, `M_DBD`, and `M_safety`; for more details on these metrics, refer to Section 2.3 of [our paper](https://chemrxiv.org/engage/chemrxiv/article-details/661dd99b418a5379b0ee73fc).
+- The `target` argument specifies the metric to be optimized, supporting `M_Storage`, `M_DBD`, and `M_safety`; for more details on these metrics, refer to Section 2.3 of [our paper](https://pubs.rsc.org/en/content/articlehtml/2024/sc/d4sc03609c).
 
 An example command is shown below:
 ```bash
@@ -70,9 +70,13 @@ You can further run the corresponding Jupyter notebooks in `notebooks` to follow
 ## Citations
 ```bibtex
 @article{liu2024diversity,
-title={{Diversity-driven, efficient exploration of a MOF design space to optimize MOF properties: application to NH_3 adsorption}},
-author={Liu, Tsung-Wei and Nguyen, Quan and Dieng, Adji Bousso and Gomez-Gualdron, Diego},
-journal={ChemRxiv preprint},
-year={2024}
+title={Diversity-driven, efficient exploration of a MOF design space to optimize MOF properties},
+author={Liu, Tsung-Wei and Nguyen, Quan and Dieng, Adji Bousso and G{\'o}mez-Gualdr{\'o}n, Diego A},
+journal={Chemical Science},
+volume={15},
+number={45},
+pages={18903--18919},
+year={2024},
+publisher={Royal Society of Chemistry}
 }
 ```
